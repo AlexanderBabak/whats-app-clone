@@ -1,12 +1,12 @@
-import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import { ChatsScreenHeader } from '../components/ChatsScreenHeader';
-import { colors } from '../assets/constants';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { ChatsScreenHeader } from "../components/ChatsScreenHeader";
+import { colors } from "../assets/constants";
 
 export const GroupsScreen = () => {
   return (
     <View style={styles.textContainer}>
-      <ChatsScreenHeader title='Groups' />
+      <ChatsScreenHeader title="Groups" />
     </View>
   );
 };
