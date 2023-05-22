@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { IChatData } from '../interfaces/chatItem';
+import { IChatData, IContact } from '../interfaces/chatItem';
+import { getTime } from '../helpers/getTime';
 
 interface Props {
   users: IChatData[];
@@ -24,10 +25,10 @@ export const chatsSlice = createSlice({
       state.users = action.payload;
     },
     addMessage: (state, action: PayloadAction<PayloadMessage>) => {
-      //найти объект у корогого userId = тому с кем ты переписываешься
+      //find the user you are chatting with
       const userObj = state.users.find((user) => user.userId === action.payload.userId);
 
-      // добавить ему сообщение
+      // add a message
       userObj?.messages.push({
         id: new Date().toISOString(),
         userId: action.payload.author,
@@ -35,7 +36,16 @@ export const chatsSlice = createSlice({
       });
     },
 
-    createChat: (state) => {},
+    createChat: (state, action: PayloadAction<IContact>) => {
+      state.users.push({
+        userId: action.payload.contactId,
+        name: action.payload.name,
+        image: action.payload.image,
+        time: getTime(),
+        unreadMsg: 0,
+        messages: [],
+      });
+    },
   },
 });
 

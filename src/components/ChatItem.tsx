@@ -21,9 +21,6 @@ export const ChatItem = ({ data }: Props) => {
       onPress={() =>
         navigation.navigate('ChatItem', {
           userId: data.userId,
-          messages: data.messages,
-          name: data.name,
-          image: data.image,
         })
       }
     >
@@ -32,7 +29,7 @@ export const ChatItem = ({ data }: Props) => {
         <View style={{ gap: 4 }}>
           <Text style={styles.userName}>{data.name}</Text>
           <Text style={styles.userMessage} numberOfLines={2}>
-            {data.messages[lastElement].text}
+            {data.messages[lastElement]?.text}
           </Text>
         </View>
       </View>
@@ -84,8 +81,8 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
   },
   labelContainer: {
-    width: 24,
-    aspectRatio: 1,
+    minWidth: 30,
+    padding: 6,
     backgroundColor: colors.primary,
     borderRadius: 24,
     alignItems: 'center',

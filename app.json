@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "whats-app-clone",
-    "slug": "whats-app-clone",
+    "name": "whatsapp-clone",
+    "slug": "whatsapp-clone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/whatsapp-splash.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/whatsapp-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

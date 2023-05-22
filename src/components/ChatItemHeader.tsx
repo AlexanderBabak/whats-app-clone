@@ -30,11 +30,11 @@ export const ChatItemHeader = ({ name, image }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: colors.white,
+    position: 'relative',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 6,
-    justifyContent: 'center',
-    position: 'relative',
+    backgroundColor: colors.white,
   },
   iconContainer: {
     position: 'absolute',
