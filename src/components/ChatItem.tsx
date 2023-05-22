@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { IChatItem } from '../interfaces/chatItem';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from '../assets/constants';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../interfaces/navigation';
+import { useNavigation } from '@react-navigation/native';
 
 export const ChatItem = ({ data }: { data: IChatItem }) => {
+  const navigation: NativeStackNavigationProp<RootStackParamList, 'ChatItem'> = useNavigation();
+
   return (
-    <TouchableOpacity style={styles.mainContainer}>
+    <TouchableOpacity style={styles.mainContainer} onPress={() => navigation.navigate('ChatItem')}>
       <View style={styles.userContainer}>
         <Image source={{ uri: data.image }} style={styles.avatar} />
         <View style={{ gap: 4 }}>

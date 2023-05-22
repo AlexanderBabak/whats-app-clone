@@ -6,3 +6,9 @@ export interface IChatItem {
   unreadMsg: number;
   textMSG: string;
 }
+
+export interface IMessage {
+  id: number;
+  userId: string | number;
+  text: string;
+}
