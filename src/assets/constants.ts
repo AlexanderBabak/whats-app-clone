@@ -9,3 +9,5 @@ export const colors = {
   buttonColor: '#185ff6',
   borderColor: 'rgba(138,138,138, 0.2)',
 };
+
+export const MAIN_USER = 'babak';

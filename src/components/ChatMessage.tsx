@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { colors } from '../assets/constants';
+import { colors, MAIN_USER } from '../assets/constants';
 import { IMessage } from '../interfaces/chatItem';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const ChatMessage = ({ data }: Props) => {
-  const isUser = data.userId === 'babak';
+  const isUser = data.userId === MAIN_USER;
 
   return (
     <View

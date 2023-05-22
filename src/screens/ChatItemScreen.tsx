@@ -12,10 +12,12 @@ import {
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces/navigation';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../assets/constants';
+import { colors, MAIN_USER } from '../assets/constants';
 import { IMessage } from '../interfaces/chatItem';
 import { ChatMessage } from '../components/ChatMessage';
 import { ChatItemHeader } from '../components/ChatItemHeader';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { addMessage } from '../redux/chatsSlice';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChatItem'>;
 
@@ -23,14 +25,22 @@ const renderItem: ListRenderItem<IMessage> = ({ item }) => <ChatMessage data={it
 
 export const ChatItemScreen: React.FC<Props> = ({ navigation, route }) => {
   const [message, setMessage] = useState('');
+  const dispatch = useAppDispatch();
 
-  const { userId, name, messages, image } = route.params;
+  const { userId, name, image } = route.params;
 
-  // здесь нужно получить по айдишнику список сообщений юзера по айдишнику
+  const { users } = useAppSelector((state) => state.chats);
+  const usersMessages = users.find((user) => user.userId === userId)?.messages;
 
   const handleSendMessage = () => {
     if (message.trim() !== '') {
-      // onSendMessage(message);
+      dispatch(addMessage({ userId, text: message, author: MAIN_USER }));
+
+      // имитация ответа
+      setTimeout(() => {
+        dispatch(addMessage({ userId, text: `${message} ♥️`, author: userId }));
+      }, 2000);
+
       setMessage('');
     }
   };
@@ -51,7 +61,8 @@ export const ChatItemScreen: React.FC<Props> = ({ navigation, route }) => {
           }}
         >
           <FlatList
-            data={messages}
+            // data={messages}
+            data={usersMessages}
             renderItem={renderItem}
             inverted={true}
             keyExtractor={(item: IMessage) => String(item.id)}
