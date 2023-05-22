@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MainScreen } from '../screens/MainScreen';
 import { ChatItemScreen } from '../screens/ChatItemScreen';
 import { RootStackParamList } from '../interfaces/navigation';
+import { MainScreen } from './BottomTabNav';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
