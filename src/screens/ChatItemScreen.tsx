@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Text,
   StyleSheet,
   View,
   TouchableOpacity,
-  Image,
   TextInput,
   KeyboardAvoidingView,
   Platform,

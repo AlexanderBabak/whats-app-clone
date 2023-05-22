@@ -1,15 +1,19 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import { RootStack } from './src/navigation/RootStack';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <RootStack />
+        </NavigationContainer>
+      </Provider>
     </SafeAreaView>
   );
 }
@@ -17,6 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#fff',
+    // backgroundColor: '#fdd546',
   },
 });
