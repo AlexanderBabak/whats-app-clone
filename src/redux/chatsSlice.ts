@@ -1,27 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './store';
+import { IChatData } from '../interfaces/chatItem';
 
-interface ChatsState {
-  value: number;
+interface Props {
+  users: IChatData[];
 }
 
-const initialState: ChatsState = {
-  value: 3,
+interface PayloadMessage {
+  userId: string;
+  text: string;
+  author: string;
+}
+
+const initialState: Props = {
+  users: [],
 };
 
 export const chatsSlice = createSlice({
   name: 'chats',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    getData: (state, action: PayloadAction<IChatData[]>) => {
+      state.users = action.payload;
     },
+    addMessage: (state, action: PayloadAction<PayloadMessage>) => {
+      //найти объект у корогого userId = тому с кем ты переписываешься
+      const userObj = state.users.find((user) => user.userId === action.payload.userId);
+
+      // добавить ему сообщение
+      userObj?.messages.push({
+        id: new Date().toISOString(),
+        userId: action.payload.author,
+        text: action.payload.text,
+      });
+    },
+
+    createChat: (state) => {},
   },
 });
 
-export const { increment } = chatsSlice.actions;
-
-export const selectCount = (state: RootState) => state.chats.value;
-
+export const { getData, createChat, addMessage } = chatsSlice.actions;
 export default chatsSlice.reducer;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItem } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces/navigation';
@@ -9,7 +9,8 @@ import { CHATSDATA } from '../mockData';
 import { ChatsScreenHeader } from '../components/ChatsScreenHeader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NewChatButton } from '../components/NewChatButton';
-import { useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { getData } from '../redux/chatsSlice';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'ChatItem'>;
@@ -17,10 +18,12 @@ type Props = {
 const renderItem: ListRenderItem<IChatData> = ({ item }) => <ChatItem data={item} />;
 
 export const ChatsScreen: React.FC<Props> = ({ navigation }) => {
-  const [data, setData] = useState<IChatData[]>();
+  const { users } = useAppSelector((state) => state.chats);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const storeData = async () => {
+      // AsyncStorage.removeItem('chatData');
       try {
         let dataFromStorage = await AsyncStorage.getItem('chatData');
         if (!dataFromStorage) {
@@ -28,7 +31,7 @@ export const ChatsScreen: React.FC<Props> = ({ navigation }) => {
         }
         dataFromStorage = await AsyncStorage.getItem('chatData');
 
-        setData(dataFromStorage ? JSON.parse(dataFromStorage)?.users : null);
+        dispatch(getData(dataFromStorage ? JSON.parse(dataFromStorage)?.users : null));
       } catch (e) {
         console.log('Error!!!');
       }
@@ -37,19 +40,13 @@ export const ChatsScreen: React.FC<Props> = ({ navigation }) => {
     storeData();
   }, []);
 
-  const { value } = useAppSelector((state) => state.chats);
-
-  console.log(value, 'redux');
-
-  // переписать на редакс вместо state
-
   return (
     <View style={styles.container}>
       <ChatsScreenHeader title='Chats' />
 
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={data}
+        data={users}
         renderItem={renderItem}
         keyExtractor={(item: IChatData) => item.userId}
       />
