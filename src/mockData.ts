@@ -76,23 +76,84 @@ export const CHATSDATA: IChatData[] = [
       { id: 22, userId: 'babak', text: 'You can leverage these libraries with development' },
     ],
   },
+  {
+    userId: 'sidorov',
+    name: 'Dima Sidorov',
+    image: 'https://cdn.pixabay.com/photo/2016/11/18/19/07/happy-1836445_1280.jpg',
+    time: '01:02',
+    unreadMsg: 222,
+    messages: [
+      { id: 12, userId: 'sidorov', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'sidorov', text: 'Life is full of challenges, but with determination' },
+    ],
+  },
+  {
+    userId: 'smith',
+    name: 'Tina Smith',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg',
+    time: '09:02',
+    unreadMsg: 0,
+    messages: [
+      { id: 12, userId: 'smith', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'smith', text: 'Life is full of challenges, but with determination' },
+    ],
+  },
+  {
+    userId: 'doe',
+    name: 'John Doe',
+    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
+    time: '12:02',
+    unreadMsg: 0,
+    messages: [
+      { id: 12, userId: 'doe', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'doe', text: 'Life is full of challenges, but with determination' },
+    ],
+  },
 ];
 
 // хранится в файле на этом уровне и не меняется
 export const CONTACTS: IContact[] = [
   {
-    contactId: 'smith',
-    name: 'Alexander Smith',
-    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
+    contactId: 'dutch',
+    name: 'Alexander Dutch',
+    image: 'https://cdn.pixabay.com/photo/2015/01/07/20/53/hat-591973_1280.jpg',
   },
   {
     contactId: 'ivanov',
     name: 'Vova Ivanov',
-    image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+    image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
   },
   {
     contactId: 'petrova',
     name: 'Sara Petrova',
-    image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
+    image: 'https://cdn.pixabay.com/photo/2017/02/06/10/54/sad-2042536_1280.jpg',
+  },
+  {
+    contactId: 'doe',
+    name: 'John Doe',
+    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
+  },
+  {
+    contactId: 'smith',
+    name: 'Tina Smith',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg',
+  },
+  {
+    contactId: 'borodko',
+    name: 'Tatiana Borodko',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+  },
+  {
+    contactId: 'beauty',
+    name: 'Jessey Beauty',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/11/24/woman-1869158_1280.jpg',
+  },
+  {
+    contactId: 'bay',
+    name: 'Alla Bay',
+    image: 'https://cdn.pixabay.com/photo/2018/01/17/07/06/laptop-3087585_1280.jpg',
   },
 ];

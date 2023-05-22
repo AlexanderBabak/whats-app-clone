@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
+import { ChatsScreenHeader } from '../components/ChatsScreenHeader';
+import { colors } from '../assets/constants';
 
 export const GroupsScreen = () => {
   return (
     <View style={styles.textContainer}>
-      <Text style={styles.text}>GroupsScreen</Text>
+      <ChatsScreenHeader title='Groups' />
     </View>
   );
 };
@@ -12,8 +14,8 @@ export const GroupsScreen = () => {
 const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.white,
+    paddingHorizontal: 18,
   },
   text: {
     fontSize: 24,

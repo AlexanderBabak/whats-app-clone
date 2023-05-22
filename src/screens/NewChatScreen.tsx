@@ -4,14 +4,16 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces/navigation';
 import { ChatItem } from '../components/ChatItem';
 import { CONTACTS } from '../mockData';
-import { IChatData, IContact } from '../interfaces/chatItem';
+import { IContact } from '../interfaces/chatItem';
 import { ContactItem } from '../components/ContactItem';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { createChat } from '../redux/chatsSlice';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewChat'>;
 
 export const NewChatScreen: React.FC<Props> = ({ navigation }) => {
-  // надо получить из редакса или локального хранилища все чаты
-  const CONTACTSMES: any[] = []; // это болванка
+  const { users } = useAppSelector((state) => state.chats);
+  const dispatch = useAppDispatch();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -21,27 +23,20 @@ export const NewChatScreen: React.FC<Props> = ({ navigation }) => {
   }, []);
 
   const handleCreateChat = ({ contactId, name, image }: IContact) => {
-    // проверка есть ли он в списке
-    const isChat = CONTACTSMES.some((contact) => contact.contactId === contactId);
+    // check if a chat with this user has already been created
+    const isChat = users.some((contact) => contact.userId === contactId);
 
     if (!isChat) {
-      // создаем чат с новым собеседником, пушим данне в хранилище и в редакс
-      const newChatData: IChatData = {
-        userId: contactId,
-        name,
-        image,
-        time: '13:30',
-        unreadMsg: Math.floor(Math.random() * 3),
-        messages: [],
-      };
+      // create a chat with a new user
+      dispatch(createChat({ name, image, contactId }));
     }
-    // вторым параметром передаем с кем мы общаемся
+    //go to the chat with the specified user
     navigation.navigate('ChatItem', { userId: contactId });
   };
 
   return (
     <ScrollView>
-      <View style={{ paddingVertical: 20, paddingHorizontal: 20 }}>
+      <View style={styles.container}>
         {CONTACTS.map((contact) => (
           <ContactItem key={contact.contactId} data={contact} onCreateChat={handleCreateChat} />
         ))}
@@ -50,4 +45,9 @@ export const NewChatScreen: React.FC<Props> = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+  },
+});

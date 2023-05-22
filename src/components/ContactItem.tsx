@@ -9,8 +9,10 @@ interface Props {
 }
 
 export const ContactItem = ({ data, onCreateChat }: Props) => {
+  const { contactId, name, image } = data;
+
   const handlePress = () => {
-    onCreateChat({ contactId: data.contactId, name: data.name, image: data.image });
+    onCreateChat({ contactId, name, image });
   };
 
   return (
@@ -23,13 +25,13 @@ export const ContactItem = ({ data, onCreateChat }: Props) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 12,
     borderBottomWidth: 0.2,
     borderBottomColor: 'rgba(0,0,0, 0.3)',
-    flexDirection: 'row',
     gap: 16,
-    alignItems: 'center',
   },
   avatar: {
     width: 40,

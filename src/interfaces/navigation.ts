@@ -1,8 +1,6 @@
-import { IMessage } from './chatItem';
-
 export type RootStackParamList = {
   Main: undefined;
-  ChatItem: { userId: string; messages?: IMessage[]; name?: string; image?: string };
+  ChatItem: { userId: string };
   NewChat: undefined;
 };
 
