@@ -1,22 +1,38 @@
-import React, { useLayoutEffect } from 'react';
-import { IChatItem } from '../interfaces/chatItem';
+import React from 'react';
+import { IChatData } from '../interfaces/chatItem';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from '../assets/constants';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces/navigation';
 import { useNavigation } from '@react-navigation/native';
 
-export const ChatItem = ({ data }: { data: IChatItem }) => {
+interface Props {
+  data: IChatData;
+}
+
+export const ChatItem = ({ data }: Props) => {
   const navigation: NativeStackNavigationProp<RootStackParamList, 'ChatItem'> = useNavigation();
 
+  const lastElement = data.messages.length - 1;
+
   return (
-    <TouchableOpacity style={styles.mainContainer} onPress={() => navigation.navigate('ChatItem')}>
+    <TouchableOpacity
+      style={styles.mainContainer}
+      onPress={() =>
+        navigation.navigate('ChatItem', {
+          userId: data.userId,
+          messages: data.messages,
+          name: data.name,
+          image: data.image,
+        })
+      }
+    >
       <View style={styles.userContainer}>
         <Image source={{ uri: data.image }} style={styles.avatar} />
         <View style={{ gap: 4 }}>
           <Text style={styles.userName}>{data.name}</Text>
           <Text style={styles.userMessage} numberOfLines={2}>
-            {data.textMSG}
+            {data.messages[lastElement].text}
           </Text>
         </View>
       </View>
