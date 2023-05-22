@@ -1,7 +1,9 @@
+import { IMessage } from './chatItem';
+
 export type RootStackParamList = {
   Main: undefined;
-  ChatItem: undefined;
-  // PaymentDetails: { paymentId: string };
+  ChatItem: { userId: string; messages?: IMessage[]; name?: string; image?: string };
+  NewChat: undefined;
 };
 
 export type RootTabParamList = {

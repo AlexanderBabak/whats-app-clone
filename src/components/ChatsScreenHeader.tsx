@@ -3,7 +3,11 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../assets/constants';
 
-export const ChatsScreenHeader = ({ title }: { title: string }) => {
+interface Props {
+  title: string;
+}
+
+export const ChatsScreenHeader = ({ title }: Props) => {
   return (
     <>
       <View style={styles.containerLogo}>

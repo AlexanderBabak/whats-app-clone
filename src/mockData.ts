@@ -1,86 +1,59 @@
-import { IChatItem } from './interfaces/chatItem';
+import { IChatData, IContact } from './interfaces/chatItem';
 
-export const usersData: IChatItem[] = [
+export const CHATSDATA: IChatData[] = [
   {
-    id: 1,
-    name: 'Alexander Babak',
-    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
-    time: '12:30',
-    unreadMsg: 2,
-    textMSG:
-      'Take the effort out of responding with suggested text and emoji replies, and check off little to-dos, like adding an event to your calendar or confirming the weather, without ever leaving the conversation.',
-  },
-  {
-    id: 2,
-    name: 'Tatiana Ivashenko',
-    image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
-    time: '5:30',
-    unreadMsg: 0,
-    textMSG: 'What is your name',
-  },
-  {
-    id: 3,
-    name: 'Vova Ivanov',
-    image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
-    time: '6:30',
-    unreadMsg: 1,
-    textMSG: 'What is your name',
-  },
-  {
-    id: 4,
+    userId: 'smirnova',
     name: 'Sara Smirnova',
     image: 'https://cdn.pixabay.com/photo/2018/03/01/14/57/portrait-3190849_1280.jpg',
     time: '23:30',
     unreadMsg: 0,
-    textMSG: 'Hello',
+    messages: [
+      { id: 12, userId: 'smirnova', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'smirnova', text: 'Life is full of challenges, but with determination' },
+    ],
   },
   {
-    id: 5,
-    name: 'Tim Ford',
-    image: 'https://cdn.pixabay.com/photo/2018/01/02/09/47/woman-3055841_1280.jpg',
+    userId: 'borodko',
+    name: 'Tatiana Borodko',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
     time: '13:30',
-    unreadMsg: 0,
-    textMSG: 'Take the effort out of responding with suggested text and emoji replies, and check',
+    unreadMsg: 1,
+    messages: [
+      { id: 12, userId: 'borodko', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'borodko', text: 'Life is full of challenges, but with determination' },
+    ],
   },
   {
-    id: 6,
-    name: 'Dan Miles',
-    image: 'https://cdn.pixabay.com/photo/2015/01/07/20/53/hat-591973_1280.jpg',
-    time: '23:30',
-    unreadMsg: 3,
-    textMSG: 'What is your name',
-  },
-  {
-    id: 7,
-    name: 'Alexander Babak',
-    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
-    time: '12:30',
-    unreadMsg: 2,
-    textMSG:
-      'Take the effort out of responding with suggested text and emoji replies, and check off little to-dos, like adding an event to your calendar or confirming the weather, without ever leaving the conversation.',
-  },
-  {
-    id: 8,
-    name: 'Tatiana Ivashenko',
-    image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
-    time: '5:30',
-    unreadMsg: 0,
-    textMSG: 'What is your name',
-  },
-  {
-    id: 9,
+    userId: 'ivanov',
     name: 'Vova Ivanov',
     image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
     time: '6:30',
-    unreadMsg: 1,
-    textMSG: 'What is your name',
+    unreadMsg: 0,
+    messages: [
+      { id: 12, userId: 'ivanov', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'ivanov', text: 'Life is full of challenges, but with determination' },
+    ],
+  },
+];
+
+// хранится в файле на этом уровне и не меняется
+export const CONTACTS: IContact[] = [
+  {
+    contactId: 'smith',
+    name: 'Alexander Smith',
+    image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
   },
   {
-    id: 10,
-    name: 'Sara Smirnova',
-    image: 'https://cdn.pixabay.com/photo/2018/03/01/14/57/portrait-3190849_1280.jpg',
-    time: '23:30',
-    unreadMsg: 0,
-    textMSG: 'Hello',
+    contactId: 'ivanov',
+    name: 'Vova Ivanov',
+    image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+  },
+  {
+    contactId: 'petrova',
+    name: 'Sara Petrova',
+    image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
   },
 ];

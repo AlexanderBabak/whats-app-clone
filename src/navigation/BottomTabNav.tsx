@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { CallsScreen } from '../screens/CallsScreen';
-import { GroupsScreen } from '../screens/GroupsScreen';
+import { CallsScreen } from '../screens/empty/CallsScreen';
+import { GroupsScreen } from '../screens/empty/GroupsScreen';
 import { ChatsScreen } from '../screens/ChatsScreen';
-import { SettingsScreen } from '../screens/SettingsScreen';
+import { SettingsScreen } from '../screens/empty/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 

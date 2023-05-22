@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ChatItemScreen } from '../screens/ChatItemScreen';
 import { RootStackParamList } from '../interfaces/navigation';
 import { MainScreen } from './BottomTabNav';
+import { NewChatScreen } from '../screens/NewChatScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -10,6 +11,7 @@ export const RootStack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name='Main' component={MainScreen} />
       <Stack.Screen name='ChatItem' component={ChatItemScreen} />
+      <Stack.Screen name='NewChat' component={NewChatScreen} />
     </Stack.Navigator>
   );
 };

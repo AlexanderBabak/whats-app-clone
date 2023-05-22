@@ -3,8 +3,12 @@ import { View, Text } from 'react-native';
 import { colors } from '../assets/constants';
 import { IMessage } from '../interfaces/chatItem';
 
-export const ChatMessage = ({ data }: { data: IMessage }) => {
-  const isUser = data.userId === '1234';
+interface Props {
+  data: IMessage;
+}
+
+export const ChatMessage = ({ data }: Props) => {
+  const isUser = data.userId === 'babak';
 
   return (
     <View
