@@ -9,6 +9,7 @@ import { CHATSDATA } from '../mockData';
 import { ChatsScreenHeader } from '../components/ChatsScreenHeader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NewChatButton } from '../components/NewChatButton';
+import { useAppSelector } from '../redux/hooks';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'ChatItem'>;
@@ -35,6 +36,10 @@ export const ChatsScreen: React.FC<Props> = ({ navigation }) => {
 
     storeData();
   }, []);
+
+  const { value } = useAppSelector((state) => state.chats);
+
+  console.log(value, 'redux');
 
   // переписать на редакс вместо state
 
