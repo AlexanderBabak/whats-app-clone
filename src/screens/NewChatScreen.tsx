@@ -1,13 +1,13 @@
 import React, { useLayoutEffect } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../interfaces/navigation';
-import { ChatItem } from '../components/ChatItem';
-import { CONTACTS } from '../mockData';
-import { IContact } from '../interfaces/chatItem';
-import { ContactItem } from '../components/ContactItem';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { ChatItem } from '../components/ChatItem';
 import { createChat } from '../redux/chatsSlice';
+import { ContactItem } from '../components/ContactItem';
+import { RootStackParamList } from '../interfaces/navigation';
+import { IContact } from '../interfaces/chatItem';
+import { CONTACTS } from '../mockData';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'NewChat'>;
 

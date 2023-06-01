@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItem } from 'react-native';
-import { IChatData } from '../interfaces/chatItem';
-import { colors } from '../assets/constants';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { ChatItem } from '../components/ChatItem';
 import { ChatsScreenHeader } from '../components/ChatsScreenHeader';
 import { NewChatButton } from '../components/NewChatButton';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { fetchData } from '../helpers/fetchData';
+import { IChatData } from '../interfaces/chatItem';
+import { colors } from '../assets/constants';
 
 const renderItem: ListRenderItem<IChatData> = ({ item }) => <ChatItem data={item} />;
 
