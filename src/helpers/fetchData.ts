@@ -1,8 +1,8 @@
+import { Alert } from 'react-native';
+import { Dispatch } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CHATSDATA } from '../mockData';
 import { getData } from '../redux/chatsSlice';
-import { Alert } from 'react-native';
-import { Dispatch } from '@reduxjs/toolkit';
 
 export const fetchData = async (dispatch: Dispatch) => {
   // to reset values in local storage

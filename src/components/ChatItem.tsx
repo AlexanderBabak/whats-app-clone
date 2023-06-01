@@ -1,10 +1,10 @@
 import React from 'react';
-import { IChatData } from '../interfaces/chatItem';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { colors } from '../assets/constants';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../interfaces/navigation';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { colors } from '../assets/constants';
+import { IChatData } from '../interfaces/chatItem';
+import { RootStackParamList } from '../interfaces/navigation';
 
 interface Props {
   data: IChatData;

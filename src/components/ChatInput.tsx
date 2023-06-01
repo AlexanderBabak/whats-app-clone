@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { colors } from '../assets/constants';
 import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../assets/constants';
 
 interface Props {
   message: string;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { colors } from '../assets/constants';
-import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../assets/constants';
 import { RootStackParamList } from '../interfaces/navigation';
 
 export const NewChatButton = () => {
