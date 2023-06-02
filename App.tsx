@@ -1,11 +1,12 @@
-import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { SafeAreaView as AndroidSafeAreaView } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
-import "react-native-gesture-handler";
-import { RootStack } from "./src/navigation/RootStack";
-import { Provider } from "react-redux";
-import { store } from "./src/redux/store";
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView as AndroidSafeAreaView } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+import FlashMessage from 'react-native-flash-message';
+import { store } from './src/redux/store';
+import { RootStack } from './src/navigation/RootStack';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Provider store={store}>
           <NavigationContainer>
             <RootStack />
+            <FlashMessage position='bottom' />
           </NavigationContainer>
         </Provider>
       </SafeAreaView>

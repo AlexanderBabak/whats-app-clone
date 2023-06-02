@@ -6,11 +6,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../assets/constants';
 import { RootStackParamList } from '../interfaces/navigation';
 
-export const NewChatButton = () => {
-  const navigation: NativeStackNavigationProp<RootStackParamList, 'NewChat'> = useNavigation();
+interface Props {
+  routeName: 'NewChat' | 'NewGroup';
+}
+
+export const NewChatButton = ({ routeName }: Props) => {
+  const navigation: NativeStackNavigationProp<RootStackParamList, 'NewChat' | 'NewGroup'> =
+    useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('NewChat')} style={styles.container}>
+    <TouchableOpacity onPress={() => navigation.navigate(routeName)} style={styles.container}>
       <Ionicons name='add' size={30} color={colors.white} />
     </TouchableOpacity>
   );

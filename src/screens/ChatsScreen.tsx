@@ -30,7 +30,7 @@ export const ChatsScreen = () => {
         contentContainerStyle={{ flexDirection: 'column-reverse' }}
       />
 
-      <NewChatButton />
+      <NewChatButton routeName='NewChat' />
     </View>
   );
 };

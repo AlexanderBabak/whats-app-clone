@@ -2,6 +2,8 @@ export type RootStackParamList = {
   Main: undefined;
   ChatItem: { userId: string };
   NewChat: undefined;
+  NewGroup: undefined;
+  GroupChatItem: { groupName: string };
 };
 
 export type RootTabParamList = {
