@@ -9,34 +9,45 @@ import {
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { addMessage } from '../redux/chatsSlice';
+import { addGroupMessage } from '../redux/groupChatsSlice';
 import { RootStackParamList } from '../interfaces/navigation';
 import { IMessage } from '../interfaces/chatItem';
-import { ChatMessage } from '../components/ChatMessage';
 import { ChatItemHeader } from '../components/ChatItemHeader';
 import { ChatInput } from '../components/ChatInput';
+import { ChatGroupMessage } from '../components/ChatGroupMessage';
 import { colors, MAIN_USER } from '../assets/constants';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'ChatItem'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'GroupChatItem'>;
 
-const renderItem: ListRenderItem<IMessage> = ({ item }) => <ChatMessage data={item} />;
+const renderItem: ListRenderItem<IMessage> = ({ item }) => <ChatGroupMessage data={item} />;
 
-export const ChatItemScreen: React.FC<Props> = ({ route }) => {
+export const GroupChatItemScreen: React.FC<Props> = ({ route }) => {
   const [message, setMessage] = useState('');
-  const { users } = useAppSelector((state) => state.chats);
+  const { groups } = useAppSelector((state) => state.groups);
   const dispatch = useAppDispatch();
 
-  const { userId } = route.params;
-  const user = users.find((user) => user.userId === userId);
+  const { groupName } = route.params;
+
+  const group = groups.find((group) => group.groupName === groupName);
+
+  const usersQty = group?.users?.length ?? 0;
 
   const handleSendMessage = () => {
     if (message.trim() !== '') {
-      dispatch(addMessage({ userId, text: message, author: MAIN_USER }));
+      dispatch(addGroupMessage({ groupName, text: message, author: MAIN_USER }));
 
       // simulated chat response
-      setTimeout(() => {
-        dispatch(addMessage({ userId, text: `${message} ♥️`, author: userId }));
-      }, 2000);
+      for (let i = 0; i < usersQty; i++) {
+        setTimeout(() => {
+          dispatch(
+            addGroupMessage({
+              groupName,
+              text: `${message} ♥️`,
+              author: group?.users[i].userId,
+            }),
+          );
+        }, 2000 + Number(`${i}000`));
+      }
 
       setMessage('');
     }
@@ -49,11 +60,11 @@ export const ChatItemScreen: React.FC<Props> = ({ route }) => {
       keyboardVerticalOffset={Platform.OS === 'ios' ? 48 : 0}
     >
       <View style={{ flex: 1 }}>
-        <ChatItemHeader name={user?.name} image={user?.image} routeName='Chats' />
+        <ChatItemHeader name={group?.groupName} routeName='Groups' usersQty={usersQty + 1} />
 
         <View style={styles.listContainer}>
           <FlatList
-            data={user?.messages}
+            data={group?.messages}
             renderItem={renderItem}
             inverted={true}
             keyExtractor={(item: IMessage) => String(item.id)}

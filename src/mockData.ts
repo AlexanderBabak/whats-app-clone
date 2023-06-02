@@ -1,4 +1,4 @@
-import { IChatData, IContact } from './interfaces/chatItem';
+import { IChatData, IContact, IGroupChatData } from './interfaces/chatItem';
 
 export const CHATSDATA: IChatData[] = [
   {
@@ -114,46 +114,164 @@ export const CHATSDATA: IChatData[] = [
   },
 ];
 
-// хранится в файле на этом уровне и не меняется
+export const GROUPCHATSDATA: IGroupChatData[] = [
+  {
+    groupName: 'Apple',
+    time: '23:30',
+    unreadMsg: 0,
+    users: [
+      {
+        userId: 'borodko',
+        name: 'Tatiana Borodko',
+        image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+      },
+      {
+        userId: 'ivanov',
+        name: 'Vova Ivanov',
+        image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
+      },
+    ],
+    messages: [
+      { id: 12, userId: 'borodko', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'ivanov', text: 'Life is full of challenges, but with determination' },
+    ],
+  },
+  {
+    groupName: 'Orange',
+    time: '13:30',
+    unreadMsg: 1,
+    users: [
+      {
+        userId: 'sidorov',
+        name: 'Dima Sidorov',
+        image: 'https://cdn.pixabay.com/photo/2016/11/18/19/07/happy-1836445_1280.jpg',
+      },
+      {
+        userId: 'smith',
+        name: 'Tina Smith',
+        image: 'https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg',
+      },
+      {
+        userId: 'borodko',
+        name: 'Tatiana Borodko',
+        image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+      },
+    ],
+    messages: [
+      { id: 12, userId: 'borodko', text: 'The Expo Go app is a great tool to get started' },
+      {
+        id: 13,
+        userId: 'babak',
+        text: 'Whe tradeoff is that Expo Go does not allow you to add custom native code',
+      },
+      { id: 14, userId: 'smith', text: 'You can leverage these libraries with development' },
+      { id: 15, userId: 'smith', text: 'To make use of third-party libraries with custom native' },
+      {
+        id: 16,
+        userId: 'babak',
+        text: 'Development builds are like your own personal version of Expo Go',
+      },
+      {
+        id: 17,
+        userId: 'borodko',
+        text: 'they include the native runtime that powers your app, and you control what is included in that native runtime by adding or removing',
+      },
+      {
+        id: 18,
+        userId: 'babak',
+        text: 'Development builds allow you to continue to build your app in JavaScript',
+      },
+      {
+        id: 20,
+        userId: 'sidorov',
+        text: 'Learn how to start using custom native code in your app by switching from Expo Go',
+      },
+      {
+        id: 21,
+        userId: 'sidorov',
+        text: 'You can also use development builds in this context ',
+      },
+      { id: 22, userId: 'babak', text: 'You can leverage these libraries with development' },
+    ],
+  },
+  {
+    groupName: 'Cars',
+    time: '03:30',
+    unreadMsg: 0,
+    users: [
+      {
+        userId: 'borodko',
+        name: 'Tatiana Borodko',
+        image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+      },
+      {
+        userId: 'ivanov',
+        name: 'Vova Ivanov',
+        image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
+      },
+      {
+        userId: 'sidorov',
+        name: 'Dima Sidorov',
+        image: 'https://cdn.pixabay.com/photo/2016/11/18/19/07/happy-1836445_1280.jpg',
+      },
+    ],
+    messages: [
+      { id: 12, userId: 'borodko', text: 'Hello' },
+      { id: 13, userId: 'babak', text: 'With suggested text and emoji replies' },
+      { id: 14, userId: 'ivanov', text: 'Life is full of challenges, but with determination' },
+    ],
+  },
+];
+
+// stored in the file at this level and does not change
 export const CONTACTS: IContact[] = [
   {
     contactId: 'dutch',
     name: 'Alexander Dutch',
     image: 'https://cdn.pixabay.com/photo/2015/01/07/20/53/hat-591973_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'ivanov',
     name: 'Vova Ivanov',
     image: 'https://cdn.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'petrova',
     name: 'Sara Petrova',
     image: 'https://cdn.pixabay.com/photo/2017/02/06/10/54/sad-2042536_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'doe',
     name: 'John Doe',
     image: 'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'smith',
     name: 'Tina Smith',
     image: 'https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'borodko',
     name: 'Tatiana Borodko',
     image: 'https://cdn.pixabay.com/photo/2016/11/29/06/46/adult-1867889_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'beauty',
     name: 'Jessey Beauty',
     image: 'https://cdn.pixabay.com/photo/2016/11/29/11/24/woman-1869158_1280.jpg',
+    isChecked: false,
   },
   {
     contactId: 'bay',
     name: 'Alla Bay',
     image: 'https://cdn.pixabay.com/photo/2018/01/17/07/06/laptop-3087585_1280.jpg',
+    isChecked: false,
   },
 ];
