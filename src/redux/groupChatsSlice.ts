@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { IGroupChatData } from '../interfaces/chatItem';
+import { IGroupChatData, IUser } from '../interfaces/chatItem';
 import { getTime } from '../helpers/getTime';
 
 interface Props {
@@ -14,7 +14,7 @@ interface PayloadMessage {
 }
 
 interface NewGroup {
-  checkedUsers: any[];
+  newUsers: IUser[];
   groupName: string;
 }
 
@@ -46,7 +46,7 @@ export const groupChatsSlice = createSlice({
         groupName: action.payload.groupName,
         time: getTime(),
         unreadMsg: 0,
-        users: action.payload.checkedUsers,
+        users: action.payload.newUsers,
         messages: [],
       });
     },
