@@ -7,6 +7,7 @@ import { ContactItem } from '../components/ContactItem';
 import { CreateGroupHeader } from '../components/CreateGroupHeader';
 import { CreateGroupModal } from '../components/CreateGroupModal';
 import { RootStackParamList } from '../interfaces/navigation';
+import { transformNewUsers } from '../helpers/transformNewUsers';
 import { showNotification } from '../helpers/showNotification';
 import { CONTACTS } from '../mockData';
 
@@ -22,6 +23,7 @@ export const NewGroupScreen: React.FC<Props> = ({ navigation }) => {
 
   const checkedUsers = contactsList.filter((contact) => contact.isChecked);
   const isActiveNextBtn = checkedUsers.length > 1;
+  const newUsers = transformNewUsers(checkedUsers);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -50,7 +52,7 @@ export const NewGroupScreen: React.FC<Props> = ({ navigation }) => {
       showNotification('This group already exists');
       return;
     } else {
-      dispatch(createGroupChat({ checkedUsers, groupName: validGroupName }));
+      dispatch(createGroupChat({ newUsers, groupName: validGroupName }));
       navigation.navigate('GroupChatItem', { groupName: validGroupName });
     }
 
