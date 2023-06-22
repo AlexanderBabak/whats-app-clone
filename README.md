@@ -1,3 +1,13 @@
+# Front-end mobile app `«WhatsApp Clone»`
+
+Personal and Group chats.
+
+![chats personal](https://i.ibb.co/VLv66Br/2023-06-22-17-12-09.png)
+
+![chats group](https://i.ibb.co/L94QMVM/2023-06-22-17-13-02.png)
+
+
+
 - To install the application, clone the repository to your local machine and run the yarn command
 - SplashScreen appears when loading the application
 - Application navigation is implemented using the React Navigation library. There are Stack and BottomTabs navigation
